@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Categories";
+}
+@model Category
+
+<div class="p-5 d-flex justify-content-between w-75 mx-auto">
+    <h1><a href="/">Products</a> | Categories </h1>
+</div>
+
+<div class="w-50 mx-auto">
+    <form asp-action="CreateCategory" asp-controller="Home" method="post">
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input class="form-control" asp-for="Name">
+            <span asp-validation-for="Name" class="alert-danger"></span>
+        </div>
+
+
+        <input type="submit" class="btn btn-success btn-lg mx-auto">
+    </form>
+
+<h2>Existing Category</h2>
+<ul>
+    @{
+        foreach(Category gory in ViewBag.Allcategories)
+        {
+            <li><a href="/category/@gory.CategoryId">@gory.Name</a></li>
+        }
+    }
+</ul>
+</div>
